@@ -1,7 +1,7 @@
 @sys.description('The Web App name.')
 @minLength(3)
 @maxLength(40)
-param appServiceAppName1 string = 'ylaraqui-assignment-app-bicep'
+param appServiceAppName1 string = 'ylaraqui-assignment-app-BE-bicep'
 @sys.description('The second Web App name.')
 @minLength(3)
 @maxLength(40)
@@ -13,7 +13,7 @@ param appServicePlanName string = 'ylaraqui-assignment-ASP-bicep'
 @sys.description('The Storage Account name.')
 @minLength(3)
 @maxLength(40)
-param storageAccountName string = 'jseijasstorage'
+param storageAccountName string = 'ylaraquistorage'
 @allowed([
   'nonprod'
   'prod'
