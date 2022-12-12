@@ -1,4 +1,4 @@
-name: Azure Bicep Infra
+name: Azure Bicep Infra 2
 
 on: [push, workflow_dispatch]
 
