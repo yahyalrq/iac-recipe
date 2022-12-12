@@ -1,7 +1,11 @@
 @sys.description('The Web App name.')
 @minLength(3)
 @maxLength(40)
-param appServiceAppName string = 'ylaraqui-assignment-app-bicep'
+param appServiceAppName1 string = 'ylaraqui-assignment-app-bicep'
+@sys.description('The second Web App name.')
+@minLength(3)
+@maxLength(40)
+param appServiceAppName2 string = 'ylaraqui-assignment-app-FE-bicep'
 @sys.description('The App Service Plan name.')
 @minLength(3)
 @maxLength(40)
@@ -31,14 +35,26 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2022-05-01' = {
   }
 }
 
-module appService 'modules/AppStuff.bicep' = {
-  name: 'appService'
+module appService1 'modules/appStuff.bicep' = {
+  name: 'appService1'
   params: {
     location: location
-    appServiceAppName: appServiceAppName
+    appServiceAppName: appServiceAppName1
+    appServicePlanName: appServicePlanName
+    environmentType: environmentType
+
+  }
+}
+module appService2 'modules/appStuff.bicep' = {
+  name: 'appService2'
+  params: {
+    location: location
+    appServiceAppName: appServiceAppName2
     appServicePlanName: appServicePlanName
     environmentType: environmentType
   }
 }
 
-output appServiceAppHostName string = appService.outputs.appServiceAppHostName
+output appServiceAppHostName1 string = appService1.outputs.appServiceAppHostName
+
+output appServiceAppHostName2 string = appService2.outputs.appServiceAppHostName

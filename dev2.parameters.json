@@ -1,0 +1,21 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "appServiceAppName1": {
+            "value": "ylaraqui-assignment-app-dev-bicep"
+        },
+        "appServiceAppName2": {
+            "value": "ylaraqui-assignment-app-fe-dev"
+        },
+        "appServicePlanName": {
+            "value": "ylaraqui-assignment-ASP-dev-bicep"
+        },
+        "storageAccountName": {
+            "value": "jseijasdevstorage"
+        },
+        "environmentType": {
+            "value": "nonprod"
+        }
+    }
+}
