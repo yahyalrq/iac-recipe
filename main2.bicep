@@ -1,3 +1,4 @@
+@sys.description(' dev ')
 @sys.description('The Web App name.')
 @minLength(3)
 @maxLength(40)
