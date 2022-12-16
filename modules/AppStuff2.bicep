@@ -12,6 +12,10 @@ var appServicePlanSkuName = (environmentType == 'prod') ? 'P2V3' : 'F1'
 resource appServicePlan 'Microsoft.Web/serverFarms@2022-03-01' = {
   name: appServicePlanName
   kind: 'linux'
+  properties: {
+    reserved: true
+  }
+
   location: location
   sku: {
     name: appServicePlanSkuName
