@@ -1,4 +1,4 @@
-name: Azure Bicep Infra 2
+name: Azure Bicep Infra
 
 on: [push, workflow_dispatch]
 
@@ -38,7 +38,7 @@ jobs:
         subscriptionId: e0b9cada-61bc-4b5a-bd7a-52c606726b3b
         resourceGroupName: jseijas_students_1
         template: ./main.bicep
-        parameters: dev2.parameters.json dbuser=${{ secrets.DBUSER }} dbhost=${{ secrets.DBHOST }} dbpass=${{ secrets.DBPASS }} dbname=${{ secrets.DBNAMEdev }}
+        parameters: dev.parameters.json dbuser=${{ secrets.DBUSER }} dbhost=${{ secrets.DBHOST }} dbpass=${{ secrets.DBPASS }} dbname=${{ secrets.DBNAMEdev }}
         failOnStdErr: false
 
   deploy-prod:
@@ -65,5 +65,5 @@ jobs:
         subscriptionId: e0b9cada-61bc-4b5a-bd7a-52c606726b3b
         resourceGroupName: jseijas_students_1
         template: ./main.bicep
-        parameters: prod2.parameters.json dbuser=${{ secrets.DBUSER }} dbhost=${{ secrets.DBHOST }} dbpass=${{ secrets.DBPASS }} dbname=${{ secrets.DBNAMEprod }}
+        parameters: prod.parameters.json dbuser=${{ secrets.DBUSER }} dbhost=${{ secrets.DBHOST }} dbpass=${{ secrets.DBPASS }} dbname=${{ secrets.DBNAMEprod }}
         failOnStdErr: false
