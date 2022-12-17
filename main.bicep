@@ -21,6 +21,15 @@ param storageAccountName string = 'ylaraquistorage'
 param environmentType string
 param location string = resourceGroup().location
 
+@secure()
+param dbhost string
+@secure()
+param dbuser string
+@secure()
+param dbpass string
+@secure()
+param dbname string
+
 var storageAccountSkuName = (environmentType == 'prod') ? 'Standard_GRS' : 'Standard_LRS'
 
 resource storageAccount 'Microsoft.Storage/storageAccounts@2022-05-01' = {
@@ -42,7 +51,10 @@ module appService1 'modules/AppStuff.bicep' = {
     appServiceAppName: appServiceAppName1
     appServicePlanName: appServicePlanName
     environmentType: environmentType
-
+    dbhost: dbhost
+    dbuser: dbuser
+    dbpass: dbpass
+    dbname: dbname
   }
 }
 module appService2 'modules/AppStuff2.bicep' = {
@@ -52,6 +64,10 @@ module appService2 'modules/AppStuff2.bicep' = {
     appServiceAppName: appServiceAppName2
     appServicePlanName: appServicePlanName
     environmentType: environmentType
+    dbhost: dbhost
+    dbuser: dbuser
+    dbpass: dbpass
+    dbname: dbname
   }
 }
 

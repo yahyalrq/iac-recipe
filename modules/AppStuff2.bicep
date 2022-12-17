@@ -1,6 +1,10 @@
 param location string = resourceGroup().location
 param appServiceAppName string
 param appServicePlanName string
+param dbhost string
+param dbuser string
+param dbpass string
+param dbname string
 @allowed([
   'nonprod'
   'prod'
@@ -28,8 +32,29 @@ resource appServiceApp 'Microsoft.Web/sites@2022-03-01' = {
   properties: {
     serverFarmId: appServicePlan.id
     httpsOnly: true
+    appSettings: [
+      {
+        name: 'DBUSER'
+        value: dbuser
+      }
+      {
+        name: 'DBPASS'
+        value: dbpass
+      }
+      {
+        name: 'DBNAME'
+        value: dbname
+      }
+      {
+        name: 'DBHOST'
+        value: dbhost
+      }
+      {
+        name: 'SCM_DO_BUILD_DURING_DEPLOYMENT'
+        value: 'true'
+      }
+    ]
   }
-
 }
 
 output appServiceAppHostName string = appServiceApp.properties.defaultHostName
