@@ -27,11 +27,9 @@ resource appServiceApp 'Microsoft.Web/sites@2022-03-01' = {
   kind: 'linux'
   properties: {
     serverFarmId: appServicePlan.id
-    siteConfig: {
-      linuxFxVersion: 'python|3.10'
-    }
     httpsOnly: true
   }
+
 }
 
 output appServiceAppHostName string = appServiceApp.properties.defaultHostName
